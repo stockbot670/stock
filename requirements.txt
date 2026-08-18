@@ -1,5 +1,3 @@
-Plaintext
-
 pandas
 yfinance
 requests
