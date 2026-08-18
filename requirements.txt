@@ -1,0 +1,6 @@
+Plaintext
+
+pandas
+yfinance
+requests
+lxml
