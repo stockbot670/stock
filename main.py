@@ -1,7 +1,17 @@
-Python
 import pandas as pd
 import yfinance as yf
 import requests
+def get_sp500_tickers():
+    url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
+    # 위키피디아 차단 방지용 User-Agent 설정
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+    response = requests.get(url, headers=headers)
+    tables = pd.read_html(response.text)
+    df = tables[0]
+    
+    tickers = df['Symbol'].tolist()
+    tickers = [ticker.replace('.', '-') for ticker in tickers]
+    return tickers
 
 # 1. 최신 S&P 500 종목 가져오기
 tickers = get_sp500_tickers()
